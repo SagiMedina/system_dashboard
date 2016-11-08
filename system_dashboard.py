@@ -46,6 +46,11 @@ def system_data():
     user_data = psutil.users()
     io_data = psutil.net_io_counters()
 
+    try:
+        user_name = user_data[0].name
+    except IndexError:
+        user_name = 'No User'
+
     data = {
         'cpu': {
             'percent': cpu_data
@@ -60,7 +65,7 @@ def system_data():
             'used': disk_data[1] >> 30,
         },
         'user': {
-            'name': user_data[0].name
+            'name': user_name
         },
         'io': {
             'sent_bytes_sec': (io_data[0] - io_data_start[0]) / PERIOD,
