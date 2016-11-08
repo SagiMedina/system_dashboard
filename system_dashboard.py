@@ -11,7 +11,7 @@ app = Flask(__name__, static_folder='static')
 
 CORS(app)   # Necessary since API is running locally
 
-PERIOD = 1
+PERIOD = 1  # 1 sec
 
 
 @cross_origin()
@@ -25,9 +25,6 @@ def multiple_routes():
 def system_data():
 
     io_data_start = psutil.net_io_counters()
-
-    # Some metrics are only reported in values since uptime,
-    # so sample over a period (in seconds) to get rate.
 
     time.sleep(PERIOD)
 
@@ -47,20 +44,20 @@ def system_data():
             'percent': cpu_data
         },
         'ram': {
-            'percent': ram_data[2],
-            'total': ram_data[0] >> 20,
-            'used': ram_data[0] - ram_data[1] >> 20
+            'percent': ram_data.percent,
+            'total': ram_data.total >> 20,
+            'used': ram_data.total - ram_data.available >> 20
         },
         'disk': {
-            'total': disk_data[0] >> 30,
-            'used': disk_data[1] >> 30,
+            'total': disk_data.total >> 30,
+            'used': disk_data.used >> 30,
         },
         'user': {
             'name': user_name
         },
         'io': {
-            'sent_bytes_sec': (io_data[0] - io_data_start[0]) / PERIOD,
-            'received_bytes_sec': (io_data[1] - io_data_start[1]) / PERIOD
+            'sent_bytes_sec': (io_data.bytes_sent - io_data_start.bytes_sent),
+            'received_bytes_sec': (io_data.bytes_recv - io_data_start.bytes_recv)
         }
     }
 
@@ -69,5 +66,5 @@ def system_data():
 if __name__ == "__main__":
     PORT = int(os.getenv('PORT', 5002))
     HOST = '0.0.0.0'
-    print("System API up at http://localhost:"+str(PORT))
+    print("System Dashboard up at http://localhost:"+str(PORT))
     app.run(host=HOST, port=PORT, threaded=True)
