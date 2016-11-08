@@ -1,0 +1,20 @@
+/* For mobile phones: */
+.row{
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+    .row{
+        padding: 20px;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .row{
+        padding: 50px;
+    }
+}

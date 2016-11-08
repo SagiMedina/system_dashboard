@@ -1,0 +1,5 @@
+node_modules/
+numpack_page/
+static/build/
+static/src/css
+static/src/vendor
