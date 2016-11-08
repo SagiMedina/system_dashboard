@@ -43,7 +43,6 @@ def system_data():
     cpu_data = psutil.cpu_percent(interval=None)
     ram_data = psutil.virtual_memory()
     disk_data = psutil.disk_usage('/')
-    disk_write_data = psutil.disk_io_counters(perdisk=False)
     user_data = psutil.users()
     io_data = psutil.net_io_counters()
 
@@ -72,7 +71,7 @@ def system_data():
     return json.dumps(data)
 
 if __name__ == "__main__":
-    print("System API up at http://localhost:5002")
     PORT = int(os.getenv('PORT', 5002))
     HOST = '0.0.0.0'
+    print("System API up at http://localhost:"+str(PORT))
     app.run(host=HOST, port=PORT, threaded=True)
