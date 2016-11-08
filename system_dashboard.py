@@ -49,7 +49,7 @@ def system_data():
     try:
         user_name = user_data[0].name
     except IndexError:
-        user_name = 'No User'
+        user_name = 'root'
 
     data = {
         'cpu': {
