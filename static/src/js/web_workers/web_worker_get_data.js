@@ -21,9 +21,9 @@ function fetchSystemData() {
     });
 }
 
-self.onmessage = data => dataStore = data;
+self.onmessage = message => dataStore = message.data;
 
 fetchSystemData();
 let httpReqInterval = setInterval(() => fetchSystemData(), 5000);
 // stop after 3 minutes when on heroku
-setTimeout(() => clearInterval(httpReqInterval), 180000);
+// setTimeout(() => clearInterval(httpReqInterval), 180000);
