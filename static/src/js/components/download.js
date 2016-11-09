@@ -21,7 +21,7 @@ const Download = inject('SystemDataStore')(observer(props =>
     </div>
 ));
 
-Download.propTypes = {
+Download.wrappedComponent.propTypes = {
     SystemDataStore: React.PropTypes.object.isRequired,
 };
 

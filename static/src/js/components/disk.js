@@ -21,7 +21,7 @@ const Disk = inject('SystemDataStore')(observer(props =>
     </div>
 ));
 
-Disk.propTypes = {
+Disk.wrappedComponent.propTypes = {
     SystemDataStore: React.PropTypes.object.isRequired,
 };
 

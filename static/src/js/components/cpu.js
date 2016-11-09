@@ -89,7 +89,7 @@ class CPUGraph extends Component {
     }
 }
 
-CPUGraph.propTypes = {
+CPUGraph.wrappedComponent.propTypes = {
     SystemDataStore: React.PropTypes.object.isRequired,
 };
 

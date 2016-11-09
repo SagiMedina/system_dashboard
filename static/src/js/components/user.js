@@ -21,7 +21,7 @@ const UserName = inject('SystemDataStore')(observer(props =>
     </div>
 ));
 
-UserName.propTypes = {
+UserName.wrappedComponent.propTypes = {
     SystemDataStore: React.PropTypes.object.isRequired,
 };
 

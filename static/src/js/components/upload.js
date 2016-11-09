@@ -21,7 +21,7 @@ const Upload = inject('SystemDataStore')(observer(props =>
     </div>
 ));
 
-Upload.propTypes = {
+Upload.wrappedComponent.propTypes = {
     SystemDataStore: React.PropTypes.object.isRequired,
 };
 

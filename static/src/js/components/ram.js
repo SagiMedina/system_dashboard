@@ -61,7 +61,7 @@ class RamDoughnut extends Component {
     }
 }
 
-RamDoughnut.propTypes = {
+RamDoughnut.wrappedComponent.propTypes = {
     SystemDataStore: React.PropTypes.object.isRequired,
 };
 
